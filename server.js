@@ -13,9 +13,7 @@ var
   //crypto = require('crypto'),
   md = require("node-markdown").Markdown,
   opt = require('./opt'),
-  path = require('path'),
-  // listen on this port
-  SERVER_PORT = 8224;
+  path = require('path');
   
 // create server
 var app = module.exports = express.createServer();
@@ -43,7 +41,7 @@ app.register('.md', {
       locals['siteUrl'] = opt.siteUrl;
       
       // locals variables substitution {<varname>}
-      var withlocals = html.replace(/\{([^}]+)\}/g, function(_, name){
+      var withlocals = html.replace(/\{([^}\s]+)\}/g, function(_, name){
         return locals[name];
       });
       
@@ -136,4 +134,4 @@ app.error(function(err, req, res){
 /**
  * listen already!
  */
-app.listen(SERVER_PORT);
+app.listen(opt.port);
