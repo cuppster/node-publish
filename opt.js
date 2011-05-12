@@ -7,9 +7,14 @@ var path = require('path');
 module.exports = {
   
   /**
+   * server port
+   */   
+  port: 8224,
+  
+  /**
    * site name
    */
-  siteName: 'Cuppster.com',  
+  siteName: 'My Site',  
   
   /**
    * site url
@@ -19,7 +24,7 @@ module.exports = {
   /**
    * path to markdown pages
    */
-  pagesPath: path.join(__dirname, '/pages'),   
+  pagesPath: path.join(__dirname, '../node-blog/pages'),   
   
   /**
    * allow comments? (commented powerd by Disqus) 
@@ -29,6 +34,6 @@ module.exports = {
   /**
    * for Disqus, this is the 'disqus_shortname' variable
    */
-  commentsOwnerId: 'cuppsterdotcom',
+  commentsOwnerId: '',
   
 }

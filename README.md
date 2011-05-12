@@ -1,5 +1,5 @@
 
-# NodePublish
+# node-publish
 
   a simple publishing platform for node.js using Markdown and git
   
