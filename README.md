@@ -7,7 +7,7 @@
 
 It's not available yet via npm, but maybe someday!
 
-    $ npm install nodepublish
+    $ npm install node-publish
   
 ## Usage
 
@@ -17,7 +17,7 @@ It's not available yet via npm, but maybe someday!
 
 (The MIT License)
 
-Copyright (c) 2009 TJ Holowaychuk &lt;tj@vision-media.ca&gt;
+Copyright (c) 2011 Jason Cupp
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
