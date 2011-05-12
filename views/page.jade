@@ -7,7 +7,7 @@ div#content.container
   - if(opt.comments)
     div#disqus_thread.comments
       script(type="text/javascript")   
-        var disqus_shortname = '#{opt.comments_owner_id}'; // required: replace example with your forum shortname
+        var disqus_shortname = '#{opt.commentsOwnerId}'; // required: replace example with your forum shortname
         var disqus_developer = 0;
         // The following are highly recommended additional parameters. Remove the slashes in front to use.
         // var disqus_identifier = 'unique_dynamic_id_1234';
@@ -19,7 +19,7 @@ div#content.container
         })();
       noscript Please enable JavaScript to view the
         a(href="http://disqus.com/?ref_noscript) comments powered by Disqus.
-      a.dsq-brlink(href="http://disqus.com")blog comments powered by 
+      a.dsq-brlink(href="http://disqus.com") blog comments powered by 
         span.logo-disqus Disqus
     
 div#footer.container

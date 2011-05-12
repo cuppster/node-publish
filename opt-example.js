@@ -24,7 +24,7 @@ module.exports = {
   /**
    * path to markdown pages
    */
-  pagesPath: path.join(__dirname, '../node-blog/pages'),   
+  pagesPath: path.join(__dirname, '../node-blog'),   
   
   /**
    * allow comments? (commented powerd by Disqus) 
