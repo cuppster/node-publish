@@ -9,22 +9,27 @@ module.exports = {
   /**
    * server port
    */   
-  port: 8224,
+  port: 8080,
   
   /**
    * site name
    */
-  siteName: 'My Site',  
+  siteName: 'my node publish site',
   
   /**
    * site url
    */
-  siteUrl: '/',
+  siteUrl: '',
+  
+  /**
+   * author email (used for gravatar)
+   */
+  authorEmail: '',
   
   /**
    * path to markdown pages
    */
-  pagesPath: path.join(__dirname, '../node-blog'),   
+  pagesPath: path.join(__dirname, '../node-blog/pages'),   
   
   /**
    * allow comments? (commented powerd by Disqus) 
