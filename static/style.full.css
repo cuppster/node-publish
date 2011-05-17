@@ -46,15 +46,29 @@ body.index ol a {
   color: #4473C0;
 }
 
+pre {
+  background: #E7E7E2;
+  color: #000;
+  padding: 10px;
+  
+}
+
+
 .comments {
   margin-top: 15px;
   border-top: 3px solid #ccc;
 }
 
-#footer {
+#footer, #footer a  {
   background: #4473C0;
+  text-decoration: none;
+}
+
+#footer p, #footer a, #footer a:hover {
   color: #E7E7E2;
 }
+
+#footer a:hover { text-decoration: underline; }
 
 #footer p {
   padding: 10px;
