@@ -1,7 +1,7 @@
 
 # node-publish
 
-  node-publish is simple publishing tool for [Markdown](http://daringfireball.net/projects/markdown/ "Markdown") content written in node.js, expressjs and jade. Mobile and handheld browsers are supported by [jQuery Mobile](http://jquerymobile.com/ "jQuery Mobile"). 
+  node-publish is simple publishing tool for [Markdown](http://daringfireball.net/projects/markdown/ "Markdown") content written in node.js, expressjs and jade. Mobile and handheld browsers are supported by [jQuery Mobile](http://jquerymobile.com/ "jQuery Mobile"). You can see a live demo on my blog at [cuppster.com](http://cuppster.com)
   
   
 ## Installation
