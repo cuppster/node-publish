@@ -1,17 +1,14 @@
 /**
- * nodepublish server
+ * node-publish server
  */
-console.log("starting node server...");
-console.log("NODE_ENV = " + process.env.NODE_ENV);
+console.log("starting node-publish...");
+console.log("NODE_ENV = %s", process.env.NODE_ENV);
 
-// dependencies
 var 
-  //sys = require('sys'),
-  //connect = require('connect'), 
   express = require('express'),
   resource = require('express-resource'),
-  //crypto = require('crypto'),
   md = require("node-markdown").Markdown,
+  avatar = require('node-gravatar'),
   opt = require('./opt'),
   path = require('path');
   
@@ -25,20 +22,35 @@ console.log('adding commmon middleware...');
 //app.use(express.cookieParser());
 
 // set view options
-console.log('setting view options..');
+console.log('setting view options...');
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.set('view options', { layout: true });
 
-// register the markdown pages for views
+/**
+ * register the markdown pages for views
+ */
 app.register('.md', {
   compile: function(str, options){
+    
+    // add image references to bottom of markdown
+    // e.g. [id]: url/to/image  "Optional title attribute"
+    if (opt.authorEmail) {
+      var avatarUrl = avatar.get(opt.authorEmail, 'G', 22);
+      str = str + "\n[avatar]:" + avatarUrl;
+    }
+    
+    // NOTE: this is executed before the JADE header file
+    // that's why you can set the 'h1' local var here,
+    // and use it in the header.jade file
+    
     var html = md(str);
     return function(locals){
       
-      // options
+      // pass some options
       locals['siteName'] = opt.siteName;
       locals['siteUrl'] = opt.siteUrl;
+      locals['authorEmail'] = opt.authorEmail;
       
       // locals variables substitution {<varname>}
       var withlocals = html.replace(/\{([^}\s]+)\}/g, function(_, name){
@@ -49,7 +61,21 @@ app.register('.md', {
       var matches = /h1>(.+)<\/h1/i.exec(withlocals);
       if (matches)
         locals['h1'] = matches[1];
+      else
+        locals['h1'] = 'unknown';
         
+      /**
+       * masage markdown output for mobile
+       * - if an index page, add data-role="listview" to lists
+       * - remove the <h1> tag, it's already included in the header
+       */       
+      if (locals.isMobile) {
+        if (locals.isIndex) {
+          withlocals = withlocals.replace(/<(o|u)l/, "<$1l data-role=\"listview\" ");
+        }
+        withlocals = withlocals.replace(/<h1>.*<\/h1>/, "");
+      }
+      
       // return markdown converted to html
       return withlocals;      
     };
@@ -118,20 +144,21 @@ console.log("adding express resources...");
 
 // site
 var SiteResource = require('./site');
+app.get(/^\/(\d{4})\/(\d{2})\/(\d{2})\/([a-z][a-z0-9-]+)\/?$/, SiteResource.showPost); // format: yyyy/mm/dd/slug
 app.resource(SiteResource);
 
 // errors
 app.error(function(err, req, res){
   var args = {
-    layout: 'error.jade',
+    layout: (req.isMobile ? 'mobile/error.jade' : 'error.jade'),
     error: err,
     page: {class: 'error' },
   };   
   res.render(path.join(opt.pagesPath, 'error.md'), args);  
 });
-
  
 /**
  * listen already!
  */
 app.listen(opt.port);
+console.log("listening on port %s...", opt.port);
