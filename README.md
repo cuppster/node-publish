@@ -11,7 +11,7 @@
   $ git clone http://github.com/cuppster/node-publish.git
     
 1. Rename the file *opt-example.js* to *opt.js* 
-2. Edit the setting inside *opt.js*
+2. Edit the settings inside *opt.js*
 
 ### upload to your server
 
@@ -27,7 +27,7 @@ The following **node.js** modules are required:
 ## Usage
 
 1. Put your blog posts in your *pagesPath* folder (see the *opt.js* file). 
-2. Be sure to use the filename format *yyyy-mm-dd-MY-BLOG-POST-NAME*.
+2. Be sure to use the filename format: *yyyy-mm-dd-MY-BLOG-POST-NAME.md*
 
 
 ## License 
