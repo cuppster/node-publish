@@ -6,24 +6,29 @@
   
 ## Installation
 
-It's not available via **npm**, but maybe someday!
+### get the source code
 
-    $ git clone http://github.com/cuppster/node-publish.git
+  $ git clone http://github.com/cuppster/node-publish.git
     
-Rename the file *opt-example.js* to *opt.js* and edit your settings.
-    
+1. Rename the file *opt-example.js* to *opt.js* 
+2. Edit the setting inside *opt.js*
+
+### upload to your server
+
+1. There are ~100 ways to do this, start a node server and keep it running. I have a [method for running node.js servers on Amazon EC2](http://cuppster.com/2011/05/12/diy-node-js-server-on-amazon-ec2) at my blog.
 
 ## Requirements
 
-The following node.js modules are required:
+The following **node.js** modules are required:
 
     $ npm install express express-resource node-markdown validator node-gravatar crypto
     
   
 ## Usage
 
-    Upload the files to your server and start a long-running node process.
-    
+1. Put your blog posts in your *pagesPath* folder (see the *opt.js* file). 
+2. Be sure to use the filename format *yyyy-mm-dd-MY-BLOG-POST-NAME*.
+
 
 ## License 
 
